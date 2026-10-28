@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Olympic Sports Performance Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f7f6; }
+        .container { max-width: 1200px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #333; }
+        .kpis { display: flex; justify-content: space-around; margin-bottom: 30px; }
+        .kpi { background: #007bff; color: white; padding: 20px; border-radius: 8px; text-align: center; width: 30%; font-size: 1.2em; }
+        .charts { display: flex; justify-content: space-between; flex-wrap: wrap; }
+        .chart-container { width: 48%; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Global Olympic Sports Performance Analysis</h1>
+        <div class="kpis">
+            <div class="kpi"><h3>Athletes</h3><p>269,731</p></div>
+            <div class="kpi"><h3>Medals</h3><p>39,783</p></div>
+            <div class="kpi"><h3>Nations</h3><p>230+</p></div>
+        </div>
+        <div class="charts">
+            <div class="chart-container"><canvas id="genderChart"></canvas></div>
+            <div class="chart-container"><canvas id="athleteChart"></canvas></div>
+        </div>
+    </div>
+    <script>
+        const ctx1 = document.getElementById('genderChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'line',
+            data: { labels: ['1896', '1920', '1960', '1980', '2000', '2016'], datasets: [{ label: 'Female Participation (%)', data: [0, 2, 11, 21, 38, 45], borderColor: '#e83e8c', fill: false }] },
+            options: { plugins: { title: { display: true, text: 'Historical Female Participation' } } }
+        });
+        const ctx2 = document.getElementById('athleteChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: { labels: ['Michael Phelps', 'Larysa Latynina', 'Nikolay Andrianov', 'Borys Shakhlin', 'Edoardo Mangiarotti'], datasets: [{ label: 'Total Medals', data: [28, 18, 15, 13, 13], backgroundColor: '#ffc107' }] },
+            options: { plugins: { title: { display: true, text: 'Top All-Time Medalists' } } }
+        });
+    </script>
+</body>
+</html>
